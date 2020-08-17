@@ -6,7 +6,7 @@ services:
 
 
 before_install:
-    - docker build -t Mark-Ortner-NRW/docker-react -f Dockerfile.dev . 
+    - docker build -t innoq/docker-react -f Dockerfile.dev . 
 
 script:
-    - docker run -e CI=true Mark-Ortner-NRW/docker-react npm run test -- --coverage
+    - docker run -e CI=true innoq/docker-react npm run test -- --coverage
