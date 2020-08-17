@@ -4,9 +4,21 @@ sudo: required
 services:
     - docker
 
-
 before_install:
     - docker build -t innoq/docker-react -f Dockerfile.dev . 
 
 script:
     - docker run -e CI=true innoq/docker-react npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "eu-central-1a"
+    app: "docker-react"
+    env: "DockerReact-env"     
+    bucket_name: "elasticbeanstalk-eu-central-1-696779925067    "
+    bucket_path: "docker-react"
+    on:
+        branch: master
+
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
