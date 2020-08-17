@@ -13,10 +13,10 @@ script:
 deploy:
     provider: elasticbeanstalk
     region: "eu-central-1"
-    app: "docker"
-    env: "Docker-env-1"     
+    app: "innoq-app"
+    env: "Innoq-app-env"     
     bucket_name: "elasticbeanstalk-eu-central-1-696779925067"
-    bucket_path: "docker"
+    bucket_path: "innoq-app"
     on:
         branch: master
 
