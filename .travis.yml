@@ -16,7 +16,7 @@ deploy:
     app: "docker"
     env: "Docker-env"     
     bucket_name: "elasticbeanstalk-eu-central-1-696779925067"
-    bucket_path: "docker-react"
+    bucket_path: "docker"
     on:
         branch: master
 
