@@ -6,7 +6,7 @@
     RUN npm run build
     
     # Test
-    FROM nginx
+    FROM nginx:stable-alpine
     EXPOSE 80
     COPY --from=0 /app/build /usr/share/nginx/html
 
