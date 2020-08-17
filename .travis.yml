@@ -8,13 +8,12 @@ before_install:
     - docker build -t test-image -f Dockerfile.dev . 
 
 script:
-    - docker run -e CI=true test-image npm run test -- --coverage
+    - docker run -e CI=true innoq-app npm run test -- --coverage
 
 deploy:
     provider: elasticbeanstalk
     region: "eu-central-1"
     app: "innoq-app"
-    ELASTIC_BEANSTALK_LABEL: "Sample Application"
     env: "InnoqApp-env"     
     bucket_name: "elasticbeanstalk-eu-central-1-696779925067"
     bucket_path: "innoq-app"
