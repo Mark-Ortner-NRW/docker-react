@@ -1,14 +1,14 @@
-language: generic
-sudo: required
+# language: generic
+# sudo: required
 
-services:
-    - docker
-# Test
-before_install:
-    - docker build -t innoq-app -f Dockerfile.dev . 
+#  #services:
+#     - docker
+# # Test
+# before_install:
+#     - docker build -t innoq-app -f Dockerfile.dev . 
 
-script:
-    - docker run -e CI=true innoq-app npm run test -- --coverage
+# script:
+#     - docker run -e CI=true innoq-app npm run test -- --coverage
 
 deploy:
     provider: elasticbeanstalk
@@ -19,7 +19,6 @@ deploy:
     bucket_path: "innoq-app"
     on:
         branch: master
-
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
 
