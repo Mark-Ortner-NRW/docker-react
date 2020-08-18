@@ -5,10 +5,10 @@ services:
     - docker
 # Test
 before_install:
-    - docker build -t test-image -f Dockerfile.dev . 
+    - docker build -t innoq-app-Image -f Dockerfile.dev . 
 
 script:
-    - docker run -e CI=true innoq-app npm run test -- --coverage
+    - docker run -e CI=true innoq-app-Image npm run test -- --coverage
 
 deploy:
     provider: elasticbeanstalk
