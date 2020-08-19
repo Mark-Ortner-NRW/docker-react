@@ -1,3 +1,16 @@
+FROM node:alpine as builder
+WORKDIR '/app'
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:latest
+EXPOSE 80
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Example for later use ...
+
 # FROM ubuntu:12.04
 
 # RUN apt-get update
@@ -10,14 +23,3 @@
 # EXPOSE 80
 
 # # CMD ["/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
-
-FROM node:alpine as builder
-WORKDIR '/app'
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM nginx:latest
-EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html

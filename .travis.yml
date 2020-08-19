@@ -1,14 +1,14 @@
 language: generic
 sudo: required
 
-#  #services:
-#     - docker
-# # Test
-# before_install:
-#     - docker build -t innoq-app -f Dockerfile.dev . 
+services:
+    - docker
 
-# script:
-#     - docker run -e CI=true innoq-app npm run test -- --coverage
+before_install:
+    - docker build -t innoq-app -f Dockerfile.dev . 
+
+script:
+    - docker run -e CI=true innoq-app npm run test -- --coverage
 
 deploy:
     provider: elasticbeanstalk
